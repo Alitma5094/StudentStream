@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>StudentStream</title>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="{% static 'dist/tabler/tabler.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/tabler/demo.min.css' %}">
+</head>
+<body>
+<script src="{% static 'dist/tabler/demo-theme.min.js' %}"></script>
+<div class="page">
+    <!-- Navbar -->
+    {% include '_navbar.html' %}
+    <div class="page-wrapper">
+        <!-- Page body -->
+        <div class="page-body">
+            <div class="container-xl d-flex flex-column justify-content-center">
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+        <footer class="footer footer-transparent d-print-none">
+            <div class="container-xl">
+                <div class="row text-center align-items-center flex-row-reverse">
+                    <div class="col-lg-auto ms-lg-auto">
+                        <ul class="list-inline list-inline-dots mb-0">
+                            <li class="list-inline-item"><a href="#" class="link-secondary">Documentation</a></li>
+                            <li class="list-inline-item"><a href="#" class="link-secondary">License</a></li>
+                            <li class="list-inline-item"><a href="#" target="_blank" class="link-secondary"
+                                                            rel="noopener">Source code</a></li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_blank" class="link-secondary" rel="noopener">
+                                    About
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                        <ul class="list-inline list-inline-dots mb-0">
+                            <li class="list-inline-item">
+                                Copyright &copy; 2023
+                                <a href="." class="link-secondary">Simpli-Fi Technologies</a>.
+                                All rights reserved.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="{% static 'dist/tabler/tabler.min.js' %}"></script>
+<script src="{% static 'dist/tabler/demo.min.js' %}"></script>
+<script src="{% static 'dist/htmx/htmx.min.js' %}"></script>
+<script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    })
+</script>
+</body>
+</html>

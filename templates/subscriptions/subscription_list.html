@@ -1,0 +1,46 @@
+{% extends "_base.html" %}
+{% block content %}
+    <h1>Subscriptions</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table
+                        class="table table-vcenter">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phases</th>
+                        {#TODO: Hide disabled plans#}
+                        <th>Status</th>
+                        <th class="w-1"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for subscription in subscriptions %}
+                        <tr>
+                            <td>{{ subscription.subscription_plan_data.name }}</td>
+                            <td class="text-muted">{{ subscription.subscription_plan_data.phases|length }} Phases</td>
+                            <td>{% if subscription.present_at_all_locations %}
+                                <span class="status status-green">
+                        Active
+                      </span>
+                            {% else %}
+                                <span class="status status-red">
+                        Disabled
+                      </span>
+                            {% endif %}</td>
+                            <td>
+                                <a href="{% url 'subscription_detail' subscription.id %}">View</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

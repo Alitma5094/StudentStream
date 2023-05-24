@@ -1,0 +1,11 @@
+venv
+.venv
+__pycache__/
+.idea
+.coverage
+.env
+db.sqlite3
+.DS_Store
+.nova
+.vscode
+docker-compose.yml

@@ -1,0 +1,41 @@
+<div>
+    <div>
+
+    </div>
+</div>
+
+<div class="card" style="margin-top: 16px; margin-bottom: 16px">
+  <div class="card-body">
+    <h3 class="card-title">Phase {{ num }}</h3>
+{#    <p class="text-muted">This is some text within a card body.</p>#}
+      <label>
+            Cadence
+            <select name="cadence_{{ num }}" required class="form-select">
+                <option selected value="">Open this select menu</option>
+                <option value="DAILY">Once per day</option>
+                <option value="WEEKLY">Once per week</option>
+                <option value="EVERY_TWO_WEEKS">Every two weeks</option>
+                <option value="THIRTY_DAYS">Once every 30 days</option>
+                <option value="SIXTY_DAYS">Once every 60 days</option>
+                <option value="NINETY_DAYS">Once every 90 days</option>
+                <option value="MONTHLY">Once per month</option>
+                <option value="EVERY_TWO_MONTHS">Once every two months</option>
+                <option value="QUARTERLY">Once every three months</option>
+                <option value="EVERY_FOUR_MONTHS">Once every four months</option>
+                <option value="EVERY_SIX_MONTHS">Once every six months</option>
+                <option value="ANNUAL">Once per year</option>
+                <option value="EVERY_TWO_YEARS">Once every two years</option>
+            </select>
+
+        </label>
+        <label>
+            Periods (Type "forever" for infinite periods")
+            <input type="text" name="period_{{ num }}" required class="form-control"/>
+        </label>
+
+        <label>
+            Amount
+            <input type="number" name="amount_{{ num }}" min="0" required class="form-control"/>
+        </label>
+  </div>
+</div>

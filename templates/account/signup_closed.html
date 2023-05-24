@@ -1,0 +1,45 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<title>StudentStream</title>
+	<link rel="stylesheet" href="{% static 'dist/tabler/tabler.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dist/tabler/demo.min.css' %}">
+	<style>
+		@import url('https://rsms.me/inter/inter.css');
+
+		:root {
+			--tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+		}
+
+		body {
+			font-feature-settings: "cv03", "cv04", "cv11";
+		}
+	</style>
+</head>
+<body class=" d-flex flex-column">
+<script src="{% static 'dist/tabler/demo-theme.min.js' %}"></script>
+<div class="page page-center">
+	<div class="container container-tight py-4">
+		<div class="text-center mb-4">
+			<h1>StudentStream</h1>
+		</div>
+		<div class="card card-md">
+			<div class="card-body">
+				<h2 class="h2 text-center mb-4">Signup Closed</h2>
+				<p>If you are interested in using StudentStream, please reach out to us at <a href="mailto:about@studentstream.com">about@studentstream.com</a></p>
+			</div>
+		</div>
+		<div class="text-center text-muted mt-3">
+			Have an account? <a href="{% url 'account_login' %}" tabindex="-1">Log In</a>
+		</div>
+	</div>
+</div>
+<script src="{% static 'dist/tabler/tabler.min.js' %}"></script>
+<script src="{% static 'dist/tabler/demo.min.js' %}"></script>
+</body>
+</html>
