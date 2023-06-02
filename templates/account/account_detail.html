@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+{% block content %}
+    <h1>Your Account</h1>
+    <div class="card">
+        <div class="card-body">
+            <ul>
+                <li>Name: {{ user.first_name }} {{ user.last_name }}</li>
+                <li>Email: {{ user.email }}</li>
+            </ul>
+            <a href="{% url 'account_update' %}"><button class="btn btn-primary">Update</button></a>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -20,6 +20,7 @@ services:
       - "DJANGO_SESSION_COOKIE_SECURE=False"
       - "DJANGO_CSRF_COOKIE_SECURE=False"
       - "SQUARE_KEY=REPLACE-ME-WITH-YOUR-SQUARE-KEY"
+      - "SENTRY_DSN=http://REPLACE-MEingest.sentry.io/12345"
   db:
     image: postgres:13
     volumes:
