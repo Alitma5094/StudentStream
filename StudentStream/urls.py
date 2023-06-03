@@ -13,6 +13,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("accounts/", include("accounts.urls")),
     path("subscriptions/", include("subscriptions.urls")),
+    path("students/", include("students.urls")),
     path('sentry-debug/', trigger_error),
     path("", include("pages.urls")),
 ]

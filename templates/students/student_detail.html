@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{ student.first_name }} {{ student.last_name }}</h1>
+            <ul>
+                <li>First Name: {{ student.first_name }}</li>
+                <li>Last Name: {{ student.last_name }}</li>
+                <li>Email: {{ student.email }}</li>
+                <li>Student Phone: {{ student.student_phone }}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
