@@ -4,6 +4,8 @@
     <div class="card">
         <div class="card-body">
             <h1 class="card-title">{{ student.first_name }} {{ student.last_name }}</h1>
+            <a href="{% url 'student_update' student.id %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'student_delete' student.id %}" class="btn btn-danger">Delete</a>
             <ul>
                 <li>First Name: {{ student.first_name }}</li>
                 <li>Last Name: {{ student.last_name }}</li>
