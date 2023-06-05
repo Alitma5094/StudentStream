@@ -12,6 +12,7 @@ class Student(models.Model):
     email = models.EmailField()
     student_phone = models.PositiveIntegerField(null=True, blank=True)
     birthday = models.DateField()
+    payment_id = models.CharField(max_length=200, blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse("student_detail", args=[str(self.id)])
