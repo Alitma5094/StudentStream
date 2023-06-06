@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+{% block content %}
+    <h1>Students</h1>
+    {% if student_list %}
+        <div class="card">
+            <div class="list-group list-group-flush list-group-hoverable">
+                {% for student in student_list %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <a href="#">
+                                    <span class="avatar"
+                                          style="background-image: url('https://preview.tabler.io/static/avatars/000m.jpg')"></span>
+                                </a>
+                            </div>
+                            <div class="col text-truncate">
+                                <a href="{% url 'student_detail' student.id %}"
+                                   class="text-reset d-block">{{ student.first_name }} {{ student.last_name }}</a>
+                                <div class="d-block text-muted text-truncate mt-n1">Placeholder description text</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

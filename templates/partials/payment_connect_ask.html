@@ -1,0 +1,42 @@
+<div class="modal modal-blur fade show" id="modal" tabindex="-1" style="display: block;" aria-modal="true"
+     role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <p>In square, add <strong>{{ reference_id }}</strong> to the "Reference ID" property of the
+                        customer
+                        you want to add to link</p>
+                    <button type="button" class="btn btn-primary"
+                            hx-get="{% url 'student_square_modal' student_id %}"
+                            hx-indicator=".htmx-indicator"
+                            hx-vals='{"step": "merge", "ref_id": "{{ reference_id }}"}'>
+                        Next
+                    </button>
+                </div>
+
+                <div class="hr-text">Or</div>
+
+                <div class="text-center">
+                    <p>
+                        Create a new Square customer
+                    </p>
+                    <button type="button" class="btn btn-primary"
+                            hx-get="{% url 'student_square_modal' student_id %}"
+                            hx-indicator=".htmx-indicator"
+                            hx-vals='{"step": "new"}'>
+                        Next
+                    </button>
+                </div>
+                <div class="spinner-border htmx-indicator" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
