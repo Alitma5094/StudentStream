@@ -14,6 +14,8 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("subscriptions/", include("subscriptions.urls")),
     path("students/", include("students.urls")),
+    path("ranks/", include("ranks.urls")),
     path('sentry-debug/', trigger_error),
+    path("__debug__/", include("debug_toolbar.urls")),
     path("", include("pages.urls")),
 ]

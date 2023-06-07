@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block content %}
+    <a href="{% url 'rank_create' %}">
+        <button class="btn btn-primary">New Rank</button>
+    </a>
+    <section id="rank-list">
+        {% include 'partials/ranks_sort.html' %}
+    </section>
+    <script src="{% static 'dist/htmx/htmx.min.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+        htmx.onLoad(function (content) {
+            var sortables = content.querySelectorAll(".sortable");
+            for (var i = 0; i < sortables.length; i++) {
+                var sortable = sortables[i];
+                new Sortable(sortable, {
+                    animation: 150,
+                    ghostClass: 'blue-background-class',
+                    handle: '.handle',
+                });
+            }
+        })
+    </script>
+
+{% endblock content %}
