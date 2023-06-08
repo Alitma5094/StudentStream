@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from attendance.models import CheckInEvent
 from .models import Student
 from django.urls import reverse_lazy
 from django.shortcuts import render
@@ -23,6 +25,7 @@ class StudentDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["ranks"] = Rank.objects.all()
+        context["attendance"] = CheckInEvent.objects.filter(student=context["student"])
         context["student_ranks"] = RankPromotion.objects.filter(student=context["student"])
         if context["student"].payment_id:
             result = settings.SQUARE_CLIENT.subscriptions.search_subscriptions(

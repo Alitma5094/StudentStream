@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "subscriptions.apps.SubscriptionsConfig",
     "students.apps.StudentsConfig",
     "ranks.apps.RanksConfig",
+    "attendance.apps.AttendanceConfig",
 ]
 
 MIDDLEWARE = [

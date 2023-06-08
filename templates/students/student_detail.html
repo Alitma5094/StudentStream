@@ -33,7 +33,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h1 class="card-title">Subscriptions</h1>
+            <h2 class="card-title">Subscriptions</h2>
             {% if subscriptions %}
                 {% for subscription in subscriptions %}
                     <ul>
@@ -42,7 +42,7 @@
                     </ul>
                 {% endfor %}
             {% else %}
-                <p>No Subscriptions</p>
+
             {% endif %}
 
             <button
@@ -51,7 +51,6 @@
                     hx-trigger="click"
                     class="btn btn-primary"
                     hx-vals='{"step": "ask"}'
-                    {#                    _="on htmx:afterOnLoad wait 10ms then add .show to #modal then add .show to #modal-backdrop"#}
             >Connect
                 with payment provider
             </button>
@@ -101,4 +100,22 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Attendance History</h2>
+            {% if attendance %}
+                <ul>
+                    {% for event in attendance %}
+                        <li>{{ event.time }}</li>
+                    {% endfor %}
+
+                </ul>
+            {% else %}
+                <p>No Attendance Events</p>
+            {% endif %}
+        </div>
+    </div>
+
 {% endblock %}
