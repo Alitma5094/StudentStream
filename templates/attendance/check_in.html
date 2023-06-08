@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <h3>Search Contacts</h3>
+
+    <input class="form-control" type="search"
+           name="search" placeholder="Begin Typing To Search Students..."
+           hx-post="{% url 'search_results' %}"
+           hx-trigger="keyup changed delay:500ms, search"
+           hx-target="#search-results">
+    <div id="search-results">
+
+    </div>
+{% endblock %}

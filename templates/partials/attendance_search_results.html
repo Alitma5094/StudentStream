@@ -1,0 +1,17 @@
+{% load static %}
+{% if students %}
+    <ul class="list-group pt-3">
+        {% for student in students %}
+            <button class="list-group-item list-group-item-action" hx-post="{% url 'check_in_save' student.id %}"
+                    hx-trigger="click"
+                    hx-target="#search-results">
+                {#                <img src="{% static 'images/default_profile.jpg' %}" alt="avatar"#}
+                {#                     class="rounded-circle img-fluid" style="width: 50px;">#}
+                {{ student.first_name }} {{ student.last_name }}
+
+            </button>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No students found</p>
+{% endif %}
