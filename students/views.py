@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Student
@@ -5,6 +6,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 import uuid
 from django.conf import settings
+from ranks.models import RankPromotion, Rank
 
 
 class StudentListView(ListView):
@@ -20,6 +22,8 @@ class StudentDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["ranks"] = Rank.objects.all()
+        context["student_ranks"] = RankPromotion.objects.filter(student=context["student"])
         if context["student"].payment_id:
             result = settings.SQUARE_CLIENT.subscriptions.search_subscriptions(
                 body={
@@ -119,3 +123,26 @@ def student_square_modal(request, pk):
                 )
         case _:
             return render(request, "partials/payment_connect_error.html")
+
+
+def create_rank(request, pk):
+    student = Student.objects.get(id=pk)
+    rank = Rank.objects.get(id=request.POST.get("rank"))
+    RankPromotion.objects.create(
+        date=request.POST.get("date"),
+        belt_size=request.POST.get("belt_size"),
+        rank=rank,
+        student=student,
+    )
+    student.current_rank = rank
+    student.save()
+    ranks = Rank.objects.all()
+    student_ranks = RankPromotion.objects.filter(student=student)
+    context = {"ranks": ranks, "student_ranks": student_ranks}
+    return render(request, "partials/students_ranks.html", context)
+
+
+def delete_rank(request, pk):
+    student_rank = RankPromotion.objects.get(id=pk)
+    student_rank.delete()
+    return HttpResponse("")

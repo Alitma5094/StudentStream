@@ -1,0 +1,29 @@
+{% if student_ranks %}
+    <table class="table delete-row" id="rank-table">
+        <thead>
+        <tr>
+            <th scope="col">Promotion Date</th>
+            <th scope="col">Rank</th>
+            <th scope="col">Size</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody id="rank_rows" hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML swap:1s">
+        {% for rank in student_ranks %}
+            <tr>
+                <th scope="row">{{ rank.date }}</th>
+                <td>{{ rank.rank.name }}{% if  rank.rank.alt_name %}
+                    ({{ rank.alt_name }})
+                {% endif %} </td>
+                <td>{{ rank.belt_size }}</td>
+                <td><a href="#">
+                    <button type="button" class="btn btn-danger" hx-post="{% url 'delete_rank' rank.id %}">Delete
+                    </button>
+                </a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No Promotion History</p>
+{% endif %}

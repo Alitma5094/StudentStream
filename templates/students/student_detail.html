@@ -57,4 +57,48 @@
             </button>
         </div>
     </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h2>Rank History</h2>
+            <div id="rank_table">{% include "partials/students_ranks.html" %}</div>
+            <div hx-target="#rank_table" hx-swap="innerHTML">
+                <form class="row gy-2 gx-3 align-items-center" method="post">
+                    {% csrf_token %}
+                    <div class="col-auto">
+                        <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                        <select class="form-select" id="autoSizingSelect" required name="rank">
+                            <option selected disabled>-- Select Rank --</option>
+                            {% for rank in ranks %}
+                                <option value="{{ rank.pk }}">{{ rank.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                        <select name="belt_size" class="form-select" id="autoSizingSelect" required>
+                            <option selected disabled>-- Select Belt Size --</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
+                        <div class="input-group">
+                            <input type="date" name="date" required class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" hx-post="{% url 'create_rank' student.pk %}"
+                                class="btn btn-primary">Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 {% endblock %}
